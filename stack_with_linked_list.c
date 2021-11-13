@@ -1,0 +1,109 @@
+/*
+	Implementation of an dynamic Stack with linked list
+	Email: fomegnemeudje@outlook.com
+	Matricule: FE20A038
+*/
+
+#include <stdio.h>
+#include <malloc.h>
+#include <stdbool.h>
+
+// We declare the stack
+typedef struct $ {
+	int value;
+	struct $ *next;
+} Stack;
+
+// We init an stack
+Stack *create() {
+	Stack *stack = malloc(sizeof(Stack));
+	stack->value = 0;
+	stack->next = NULL;
+	return stack;
+}
+
+// We add a value in the end of the stack
+void push(Stack *stack, int value) {
+	// The prev position
+	Stack *prev = stack;
+	// The current position
+	Stack *curr;
+	// The next position
+	Stack *next;
+	// We insert the current data between the prev position and the current
+	curr = create();
+	// We insert the value
+	curr->value = value;
+	// We backup the previous top
+	next = prev->next;
+	// We save the current top
+	prev->next = curr;
+	// We save the previous top
+	curr->next = next;
+}
+
+// This function permit to know if the stack is empty of not
+bool stackIsEmpty(Stack *stack) {
+	if (stack->next == NULL) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+// We pop the data at the top
+int pop(Stack *stack) {
+	Stack *curr = stack->next;
+	int value;
+	if(stackIsEmpty(stack)) {
+		fprintf(stderr, "Overflow Error: The stack is empty\n");
+		return 0;
+	} else {
+		value = curr->value;
+		// We go to the next position
+		stack->next = curr->next;
+		// We free the old
+		free(curr);
+		return value;
+	}
+}
+
+// We display the stack
+void display(Stack *stack) {
+	Stack *curr = stack;
+	puts("---------");
+	puts("| STACK |");
+	puts("---------");
+	puts("|  TOP  |");
+	puts("---------");
+	if (stack->next == NULL) {
+		puts("| EMPTY |");
+		puts("---------");
+	} else {
+		while((curr = curr->next) != NULL) {
+			printf("|%7i|\n", curr->value);
+			puts("--------");
+		}
+	}
+}
+
+int main() {
+	Stack *stack;
+	int i;
+	puts("# We create the stack...");
+	stack = create();
+	puts("# We push data in the stack...");
+	for(i=0; i<5; i++) {
+		printf("We pushed: %i\n", i);
+		push(stack, i);
+		display(stack);
+		puts("");
+	}
+	puts("# We pop data in the stack...");
+	for(i=0; i<7; i++) {
+		printf("We poped: %i\n", pop(stack));
+		display(stack);
+		puts("");
+	}
+	return 0;
+}
