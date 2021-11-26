@@ -8,28 +8,28 @@
 #include <malloc.h>
 #include <stdbool.h>
 
-// We declare the stack
+// We declare the node
 typedef struct $ {
 	int value;
 	struct $ *next;
-} Stack;
+} Node;
 
 // We init an stack
-Stack *create() {
-	Stack *stack = malloc(sizeof(Stack));
-	stack->value = 0;
-	stack->next = NULL;
-	return stack;
+Node *create() {
+	Node *node = malloc(sizeof(Node));
+	node->value = 0;
+	node->next = NULL;
+	return node;
 }
 
 // We add a value in the end of the stack
-void push(Stack *stack, int value) {
+void push(Node *stack, int value) {
 	// The prev position
-	Stack *prev = stack;
+	Node *prev = stack;
 	// The current position
-	Stack *curr;
+	Node *curr;
 	// The next position
-	Stack *next;
+	Node *next;
 	// We insert the current data between the prev position and the current
 	curr = create();
 	// We insert the value
@@ -43,7 +43,7 @@ void push(Stack *stack, int value) {
 }
 
 // This function permit to know if the stack is empty of not
-bool stackIsEmpty(Stack *stack) {
+bool stackIsEmpty(Node *stack) {
 	if (stack->next == NULL) {
 		return true;
 	} else {
@@ -52,8 +52,8 @@ bool stackIsEmpty(Stack *stack) {
 }
 
 // We pop the data at the top
-int pop(Stack *stack) {
-	Stack *curr = stack->next;
+int pop(Node *stack) {
+	Node *curr = stack->next;
 	int value;
 	if(stackIsEmpty(stack)) {
 		fprintf(stderr, "Overflow Error: The stack is empty\n");
@@ -69,8 +69,8 @@ int pop(Stack *stack) {
 }
 
 // We display the stack
-void display(Stack *stack) {
-	Stack *curr = stack;
+void display(Node *stack) {
+	Node *curr = stack;
 	puts("---------");
 	puts("| STACK |");
 	puts("---------");
@@ -88,7 +88,7 @@ void display(Stack *stack) {
 }
 
 int main() {
-	Stack *stack;
+	Node *stack;
 	int i;
 	puts("# We create the stack...");
 	stack = create();

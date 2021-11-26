@@ -8,24 +8,24 @@
 #include <malloc.h>
 
 
-// We declare the Array
+// We declare the Node
 typedef struct $ {
 	int value;
 	struct $ *next;
-} Array;
+} Node;
 
-// We init an Array
-Array *init_array() {
-	Array *arr = malloc(sizeof(Array));
+// We init an Node
+Node *init_array() {
+	Node *arr = malloc(sizeof(Node));
 	arr->value = 0;
 	arr->next = NULL;
 	return arr;
 }
 
 // We add a value in the end of the Array
-void append(Array *arr, int value) {
+void append(Node *arr, int value) {
 	// The curent position
-	Array *curr = arr;
+	Node *curr = arr;
 	// We go to the end
 	while(curr->next != NULL) {
 		curr = curr->next;
@@ -36,13 +36,13 @@ void append(Array *arr, int value) {
 }
 
 // We insert a value in a specific position
-void insert(Array *arr, int value, unsigned int pos) {
+void insert(Node *arr, int value, unsigned int pos) {
 	// The prev position
-	Array *prev = arr;
+	Node *prev = arr;
 	// The current position
-	Array *curr;
+	Node *curr;
 	// The next position
-	Array *next;
+	Node *next;
 	// We go to the position
 	while(pos > 0) {
 		prev = prev->next;
@@ -61,8 +61,8 @@ void insert(Array *arr, int value, unsigned int pos) {
 }
 
 // We pop the data at the beginning
-int pop(Array *arr) {
-	Array *curr = arr->next;
+int pop(Node *arr) {
+	Node *curr = arr->next;
 	int value = curr->value;
 	// We go to the next position
 	arr->next = curr->next;
@@ -72,13 +72,13 @@ int pop(Array *arr) {
 }
 
 // We remove the data at a specific position
-void _remove(Array *arr, unsigned int pos) {
+void _remove(Node *arr, unsigned int pos) {
 	// The prev position
-	Array *prev = arr;
+	Node *prev = arr;
 	// The current position
-	Array *curr;
+	Node *curr;
 	// The next position
-	Array *next;
+	Node *next;
 	// We go to the position
 	while(pos > 0) {
 		prev = prev->next;
@@ -91,15 +91,15 @@ void _remove(Array *arr, unsigned int pos) {
 }
 
 // We show the Array
-void show(Array *arr) {
-	Array *curr = arr;
+void show(Node *arr) {
+	Node *curr = arr;
 	while((curr = curr->next) != NULL) {
 		printf("%i\n", curr->value);
 	}
 }
 
 int main() {
-	Array *arr = init_array();
+	Node *arr = init_array();
 	append(arr, 2);
 	append(arr, 7);
 	append(arr, 1);

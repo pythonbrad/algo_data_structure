@@ -8,24 +8,24 @@
 #include <malloc.h>
 #include <stdbool.h>
 
-// We declare the Queue
+// We declare the Node
 typedef struct $ {
 	int value;
 	struct $ *next;
-} Queue;
+} Node;
 
-// We init an Queue
-Queue *create() {
-	Queue *queue = malloc(sizeof(Queue));
-	queue->value = 0;
-	queue->next = NULL;
-	return queue;
+// We init an Node
+Node *create() {
+	Node *node = malloc(sizeof(Node));
+	node->value = 0;
+	node->next = NULL;
+	return node;
 }
 
 // We add a value in the end of the Queue
-void enqueue(Queue *queue, int value) {
+void enqueue(Node *queue, int value) {
 	// The curent position
-	Queue *curr = queue;
+	Node *curr = queue;
 	// We go to the end
 	while(curr->next != NULL) {
 		curr = curr->next;
@@ -36,7 +36,7 @@ void enqueue(Queue *queue, int value) {
 }
 
 // This function permit to know if the queue is empty of not
-bool queueIsEmpty(Queue *queue) {
+bool queueIsEmpty(Node *queue) {
 	if (queue->next == NULL) {
 		return true;
 	} else {
@@ -45,8 +45,8 @@ bool queueIsEmpty(Queue *queue) {
 }
 
 // We dequeue the data at the head
-int dequeue(Queue *queue) {
-	Queue *curr = queue->next;
+int dequeue(Node *queue) {
+	Node *curr = queue->next;
 	int value;
 	if(queueIsEmpty(queue)) {
 		fprintf(stderr, "Overflow Error: The queue is empty\n");
@@ -62,8 +62,8 @@ int dequeue(Queue *queue) {
 }
 
 // We display the Queue
-void display(Queue *queue) {
-	Queue *curr = queue;
+void display(Node *queue) {
+	Node *curr = queue;
 	puts("---------");
 	puts("| Queue |");
 	puts("---------");
@@ -83,7 +83,7 @@ void display(Queue *queue) {
 }
 
 int main() {
-	Queue *queue;
+	Node *queue;
 	int i;
 	puts("# We create the queue...");
 	queue = create();
