@@ -14,7 +14,7 @@ typedef struct $ {
 	struct $ *next;
 } Node;
 
-// We init an stack
+// We init an node
 Node *create() {
 	Node *node = malloc(sizeof(Node));
 	node->value = 0;
@@ -22,7 +22,7 @@ Node *create() {
 	return node;
 }
 
-// We add a value in the end of the stack
+// We add a value in the top of the stack
 void push(Node *stack, int value) {
 	// The prev position
 	Node *prev = stack;
