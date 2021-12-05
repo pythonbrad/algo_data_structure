@@ -50,14 +50,14 @@ int search2(int *array, int element, int length) {
 }
 
 int main() {
-	int array[] = {89, 4, 91, 11, 59, 65, 63, 14, 88, 44, 3, 95, 55, 85, 60, 18, 28, 83, 2, 9, 36, 49, 57, 86, 74, 27, 56, 58, 69, 34, 73, 87, 6, 99, 93, 66, 32, 47, 79, 92, 75, 22, 35, 48, 70, 40, 33, 80, 10, 50, 7, 51, 37, 64, 98, 19, 12, 39, 62, 46, 17, 1, 29, 15, 78, 24, 13, 71, 96, 45, 20, 82, 77, 54, 68, 97, 90, 81, 42, 8, 67, 72, 76, 16, 53, 30, 84, 38, 5, 25, 26, 21, 43, 23, 94, 41, 0, 31, 61, 52};
-	printf("31 found at the index %i\n", search1(array, 31, sizeof(array)));
-	printf("31 found at the index %i\n", search1(array, 31, sizeof(array)));
-	printf("41 found at the index %i\n", search2(array, 41, sizeof(array)));
-	printf("41 found at the index %i\n", search2(array, 41, sizeof(array)));
-	printf("41 found at the index %i\n", search2(array, 41, sizeof(array)));
-	printf("41 found at the index %i\n", search2(array, 41, sizeof(array)));
-	printf("41 found at the index %i\n", search2(array, 41, sizeof(array)));
-	printf("41 found at the index %i\n", search2(array, 41, sizeof(array)));
+	int array[100] = {89, 4, 91, 11, 59, 65, 63, 14, 88, 44, 3, 95, 55, 85, 60, 18, 28, 83, 2, 9, 36, 49, 57, 86, 74, 27, 56, 58, 69, 34, 73, 87, 6, 99, 93, 66, 32, 47, 79, 92, 75, 22, 35, 48, 70, 40, 33, 80, 10, 50, 7, 51, 37, 64, 98, 19, 12, 39, 62, 46, 17, 1, 29, 15, 78, 24, 13, 71, 96, 45, 20, 82, 77, 54, 68, 97, 90, 81, 42, 8, 67, 72, 76, 16, 53, 30, 84, 38, 5, 25, 26, 21, 43, 23, 94, 41, 0, 31, 61, 52};
+	printf("31 found at the index %i\n", search1(array, 31, 100));
+	printf("31 found at the index %i\n", search1(array, 31, 100));
+	printf("41 found at the index %i\n", search2(array, 41, 100));
+	printf("41 found at the index %i\n", search2(array, 41, 100));
+	printf("41 found at the index %i\n", search2(array, 41, 100));
+	printf("41 found at the index %i\n", search2(array, 41, 100));
+	printf("41 found at the index %i\n", search2(array, 41, 100));
+	printf("41 found at the index %i\n", search2(array, 41, 100));
 	return 0;
 }
