@@ -40,12 +40,9 @@ void display_poly(Poly_Node* P)
 	{
 		if (curr_poly_node->coef != 0)
 		{
-			// We show the sign if +
-			printf("%c", (curr_poly_node->coef >= 0) ? '+' : '\0');
-
 			// We show the coef
 			if ((curr_poly_node->coef != 1 && curr_poly_node->coef != -1) || curr_poly_node->degrees == 0)
-				printf("%i", curr_poly_node->coef);
+				printf("%+i", curr_poly_node->coef);
 
 			// We show the variable
 			if (curr_poly_node->degrees > 0)
