@@ -77,11 +77,11 @@ unsigned int degree_poly(Poly_Node* P)
 }
 
 // This function parse an integer from a char
-unsigned int get_int(char x)
+unsigned int parse_int(char x)
 {
-	if (x >= 48 && x <= 57)
+	if (x >= '0' && x <= '9')
 	{
-		return x - 48;
+		return x - '0';
 	}
 	else
 	{
@@ -175,7 +175,7 @@ void add_poly(Poly_Node* R, Poly_Node* P, Poly_Node* Q)
 
 
 // This function parse a poly from a string
-Poly_Node* get_poly(char* string)
+Poly_Node* parse_poly(char* string)
 {
 	int coef = 0;
 	int degrees = 0;
@@ -244,12 +244,12 @@ Poly_Node* get_poly(char* string)
 		}
 		else if (coef_expected)
 		{
-			coef = coef * 10 + get_int(*string);
+			coef = coef * 10 + parse_int(*string);
 			coef_got = true;
 		}
 		else if (degrees_expected)
 		{
-			degrees = degrees * 10 + get_int(*string);
+			degrees = degrees * 10 + parse_int(*string);
 		}
 		else
 		{
@@ -308,8 +308,8 @@ int eval_poly(Poly_Node* P, int x0)
 int main()
 {
 	Poly_Node* R = new_poly();
-	Poly_Node* P = get_poly("6x^3+4x^2+7x+10");
-	Poly_Node* Q = get_poly("8x^4+10x^3-5x^2+3");
+	Poly_Node* P = parse_poly("6x^3+4x^2+7x+10");
+	Poly_Node* Q = parse_poly("8x^4+10x^3-5x^2+3");
 	
 	// We add two poly and save the result in R
 	add_poly(R, P, Q);
