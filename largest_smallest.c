@@ -1,21 +1,32 @@
 #include <stdio.h>
 
-void largest_smallest(int *array, int index, int largest, int smallest, int length) {
-	if(index == length) {
-		printf("Largest:%i\nSmallest:%i", largest, smallest);
-		return;
-	} else {
-		if(array[index] < smallest) {
-			smallest = array[index];
-		} else if (array[index] > largest) {
-			largest = array[index];
-		} else {};
-		return largest_smallest(array, index+1, largest, smallest, length);
+void smallest_largest(int* arr, int length, int* result)
+{
+	// We evaluate the middle
+	float middle = 1.0 * length / 2.0;
+
+	if (length == 1)
+	{
+		*result = (*result > *arr) ? *result : *arr;
+		*(result + 1) = (*(result + 1) < *arr) ? *(result + 1) : *arr;
+	}
+	else
+	{
+		smallest_largest(arr, middle, result);
+		smallest_largest(arr + (int) middle, middle + 0.5, result);
 	}
 }
 
-int main() {
-	int array[] = {1, 3, 2, 5, 6, 4, 9, 7, 8, 0, 100};
-	largest_smallest(array, 0, 0, 0, sizeof(array)/sizeof(array[0]));
+int main()
+{
+	int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 100};
+
+	// By default, the result is the first element of this array
+	int result[2] = {arr[0], arr[0]};
+
+	smallest_largest(arr, sizeof(arr) / sizeof(int), result);
+
+	printf("The smallest is %d and the greatest is %d\n", result[0], result[1]);
+
 	return 0;
-}
+};
