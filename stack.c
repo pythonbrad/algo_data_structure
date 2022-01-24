@@ -17,10 +17,13 @@ typedef struct $ {
 Stack *create() {
 	// We init the stack
 	Stack *stack = malloc(sizeof(Stack));
+
 	// We init the top
 	stack->top = 0;
+
 	// We alloc memory
 	stack->datas = calloc(1, sizeof(int));
+
 	return stack;
 }
 
@@ -28,6 +31,7 @@ Stack *create() {
 void push(Stack *stack, int data) {
 	// We alloc memory to push this data
 	stack->datas = realloc(stack->datas, (++stack->top + 1) * sizeof(int));
+
 	// We save the data
 	stack->datas[stack->top] = data;
 }
@@ -57,8 +61,10 @@ int pop(Stack *stack) {
 	if(!stackIsEmpty(stack)) {
 		// We get the value in the top
 		int top_data = topOfStack(stack);
+
 		// We realloc memory to remove the value in the top
 		stack->datas = realloc(stack->datas, --stack->top * sizeof(int));
+
 		// We return the value removed
 		return top_data;
 	} else {
@@ -73,14 +79,17 @@ void display(Stack *stack) {
 	printf("%10s\n", "__________");
 	printf("%10s\n", "| STACK  |");
 	printf("%10s\n", "----------");
+
 	for(i=1; i<=stack->top; i++) {
 		printf("|%8i|\n", stack->datas[i]);
 		printf("%10s\n", "----------");
 	}
+
 	if (i==1) {
 		printf("%10s\n", "| EMPTY  |");
 		printf("%10s\n", "----------");
 	}
+
 	printf("%10s\n", "|  TOP   |");
 	printf("%10s\n", "----------");
 }
@@ -88,8 +97,10 @@ void display(Stack *stack) {
 int main() {
 	Stack *stack;
 	int i;
+
 	puts("# We create the stack...");
 	stack = create();
+
 	puts("# We push data in the stack...");
 	for(i=0; i<5; i++) {
 		printf("We push: %i\n", i);
@@ -97,11 +108,13 @@ int main() {
 		display(stack);
 		puts("");
 	}
+
 	puts("# We remove data in the stack...");
 	for(i=0; i<7; i++) {
 		printf("We poped: %i\n", pop(stack));
 		display(stack);
 		puts("");
 	}
+	
 	return 0;
 }

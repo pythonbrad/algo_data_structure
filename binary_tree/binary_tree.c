@@ -21,6 +21,7 @@ bool is_alpha(char* character) {
 	// 0 to 255
 	unsigned char id;
 	char alphas[52] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	
 	for (id = 0; id < 52; id++) {
 		if (alphas[id] == *character) {
 			// We get the lower character
@@ -28,12 +29,14 @@ bool is_alpha(char* character) {
 			return 1;
 		} else {};
 	};
+
 	return 0;
 };
 
 // This function create a new node
 struct Node* new_node() {
 	struct Node* node = calloc(1, sizeof(struct Node));
+
 	// We verify if memory allowed
 	if (new_node == NULL) {
 		fprintf(stderr, "No memory free to create a new node.\n");
@@ -42,6 +45,7 @@ struct Node* new_node() {
 		// We assign the id
 		node->id = ++node_next_id;
 	};
+
 	return node;
 };
 
@@ -85,12 +89,15 @@ void print_tree(struct Node* node, bool header) {
 	if (header) {
 		printf("%-10s %-30s %-10s\n", "S/N", "WORD", "FREQUENCY");
 	} else {};
+
 	// We print the left node
 	if (node->left != NULL) {
 		print_tree(node->left, 0);
 	} else {};
+
 	// We print the word of the current node
 	printf("%-10d %-30s %-10d\n", node->id, node->data, node->freq);
+
 	// We print the right node
 	if (node->right != NULL) {
 		print_tree(node->right, 0);
@@ -102,10 +109,12 @@ int main(int argc, char const *argv[]) {
 	// This variable permit to know if the word is already got
 	bool word_get = 0;
 	char curr_char;
+
 	// 0 to 255
 	unsigned char word_length = 0;
 	char curr_word[MAX_WORD_LENGTH] = "";
 	FILE* file;
+
 	// We get the filename
 	if (argc == 2) {
 		// We get the filename by argument
@@ -115,17 +124,22 @@ int main(int argc, char const *argv[]) {
 		printf("Enter the filename: ");
 		scanf("%s", filename);
 	};
+
 	// We open the data
 	file = fopen(filename, "r");
+
 	// We read the file character by character
 	while (1) {
+
 		curr_char = fgetc(file);
+
 		if (is_alpha(&curr_char)) {
 			// We build the word
 			curr_word[word_length++] = curr_char;
 			curr_word[word_length] = '\0';
 			word_get = 0;
 		} else {
+
 			// We get the word, if not already get and save it
 			if (word_get == 0) {
 				// We save the word
@@ -134,12 +148,15 @@ int main(int argc, char const *argv[]) {
 				word_length = 0;
 			} else {};
 		};
+
 		// We break if it's the end of the file
 		if (curr_char == EOF) {
 			break;
 		} else {};
 	};
+
 	fclose(file);
 	print_tree(&root_node, 1);
+
 	return 0;
 };

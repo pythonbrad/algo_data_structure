@@ -6,6 +6,7 @@ int main() {
 	int arrayB[] = {3, 6, 4, 5, 8, 9, 6, 7};
 	int arrayC[] = {3, 2, 5, 4};
 	int arrayD[] = {3, 4, 3, 6, 4, 5, 7};
+	
 	// We build an array of array
 	int *array[] = {arrayA, arrayB, arrayC, arrayD};
 

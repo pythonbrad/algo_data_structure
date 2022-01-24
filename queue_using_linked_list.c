@@ -26,10 +26,12 @@ Node *create() {
 void enqueue(Node *queue, int value) {
 	// The curent position
 	Node *curr = queue;
+
 	// We go to the end
 	while(curr->next != NULL) {
 		curr = curr->next;
 	}
+
 	// We insert the value at the next position
 	curr->next = create();
 	curr->next->value = value;
@@ -48,15 +50,19 @@ bool queueIsEmpty(Node *queue) {
 int dequeue(Node *queue) {
 	Node *curr = queue->next;
 	int value;
+
 	if(queueIsEmpty(queue)) {
 		fprintf(stderr, "Overflow Error: The queue is empty\n");
 		return 0;
 	} else {
 		value = curr->value;
+
 		// We go to the next position
 		queue->next = curr->next;
+
 		// We free the old
 		free(curr);
+
 		return value;
 	}
 }
@@ -69,6 +75,7 @@ void display(Node *queue) {
 	puts("---------");
 	puts("| HEAD  |");
 	puts("---------");
+
 	if (queue->next == NULL) {
 		puts("| EMPTY |");
 		puts("---------");
@@ -78,6 +85,7 @@ void display(Node *queue) {
 			puts("--------");
 		}
 	}
+
 	puts("|  END  |");
 	puts("---------");
 }
@@ -85,8 +93,10 @@ void display(Node *queue) {
 int main() {
 	Node *queue;
 	int i;
+
 	puts("# We create the queue...");
 	queue = create();
+
 	puts("# We enqueue data in the queue...");
 	for(i=0; i<5; i++) {
 		printf("We enqueue: %i\n", i);
@@ -94,11 +104,13 @@ int main() {
 		display(queue);
 		puts("");
 	}
+
 	puts("# We dequeue data in the queue...");
 	for(i=0; i<7; i++) {
 		printf("We dequeued: %i\n", dequeue(queue));
 		display(queue);
 		puts("");
 	}
+	
 	return 0;
 }

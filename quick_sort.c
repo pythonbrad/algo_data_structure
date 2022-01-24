@@ -10,29 +10,40 @@
 int *Merge(int *left, const int ll, int *right, const int lr, const int pivot) {
 	// We init the merge_array
 	int *merge_array = calloc(ll+lr+1, sizeof(int));
+
 	// index in the merge_array
 	int i;
+
 	// we insert the left
 	for(i=0; i<ll; i++) {
 		merge_array[i] = left[i];
 	}
+
 	// we insert the pivot
 	merge_array[i] = pivot;
+
 	// we insert the right
 	for(i=0; i<lr; i++) {
 		merge_array[i+ll+1] = right[i];
 	}
+
 	// we return the merge list
 	return merge_array;
 }
 
 int *QuickSort(int *array, const int length) {
 	const int pivot = length / 2;
+
 	int index_array;
+
 	int *left = calloc(sizeof(int), length);
+
 	int index_right = 0;
+
 	int *right = calloc(sizeof(int), length);
+
 	int index_left = 0;
+
 	// We sort if length(array) >= 2
 	if(length < 2) {
 		return array;
@@ -54,6 +65,7 @@ int *QuickSort(int *array, const int length) {
 			}
 		}
 	}
+
 	return Merge(QuickSort(left, index_left), index_left, QuickSort(right, index_right), index_right, array[pivot]);
 }
 
@@ -61,14 +73,17 @@ int main() {
 	int array[] = {17, 6, 3, 1, 9, 4, 8, 2, 5};
 	int *arr = array;
 	int i;
+
 	printf("The initial array is ");
 	for(i=0; i<sizeof(array)/sizeof(int); i++) {
 		printf("%i ", arr[i]);
 	}
+
 	printf("\nThe sort array is ");
 	arr = QuickSort(arr, sizeof(array)/sizeof(int));
 	for(i=0; i<sizeof(array)/sizeof(int); i++) {
 		printf("%i ", arr[i]);
 	}
+	
 	return 0;
 }

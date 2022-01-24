@@ -74,11 +74,13 @@ int endOfQueue(Queue *queue) {
 // This function permit to remove the data in the end and return it
 int dequeue(Queue *queue) {
 	int head_data;
+
 	// We verify if it's possible to pop
 	if(!queueIsEmpty(queue)) {
 		// We get the value in the head
 		head_data = headOfQueue(queue);
 		++queue->head;
+
 		// We return the value removed
 		return head_data;
 	} else {
@@ -90,9 +92,11 @@ int dequeue(Queue *queue) {
 // This function permit to display the queue
 void display(Queue *queue) {
 	unsigned int i;
+
 	printf("%10s\n", "__________");
 	printf("%10s\n", "| QUEUE  |");
 	printf("%10s\n", "----------");
+
 	for(i=0; i < ((queue->end < LENGTH) ? (queue->end+1) : LENGTH) && !queueIsEmpty(queue); i++) {
 		if ((queue->head % LENGTH) == (queue->end % LENGTH) && (queue->head % LENGTH) == i) {
 			printf("%10s\n", "|HEAD&END|");
@@ -104,6 +108,7 @@ void display(Queue *queue) {
 			printf("%10s\n", "|  END   |");
 			printf("%10s\n", "----------");
 		} else {};
+
 		printf("|%8i|\n", queue->datas[i]);
 		printf("%10s\n", "----------");
 	}
@@ -115,21 +120,27 @@ void display(Queue *queue) {
 
 int main() {
 	int i;
+
 	puts("# We create the queue...");
+
 	Queue *queue = create();
+
 	puts("# We enqueue data in the queue...");
+
 	for(i=0; i<LENGTH+2; i++) {
 		printf("We enqueue: %i\n", i);
 		enqueue(queue, i);
 		display(queue);
 		puts("");
 	}
+
 	puts("# We dequeue data in the queue...");
 	for(i=0; i<LENGTH+1; i++) {
 		printf("We dequeued: %i\n", dequeue(queue));
 		display(queue);
 		puts("");
 	}
+
 	puts("# We enqueue data in the queue...");
 	for(i=0; i<LENGTH/2; i++) {
 		printf("We enqueue: %i\n", i+LENGTH);
@@ -137,6 +148,7 @@ int main() {
 		display(queue);
 		puts("");
 	}
+	
 	puts("# We dequeue data in the queue...");
 	for(i=0; i<LENGTH/4; i++) {
 		printf("We dequeued: %i\n", dequeue(queue));

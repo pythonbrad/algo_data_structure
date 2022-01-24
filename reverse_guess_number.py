@@ -10,6 +10,7 @@ number_to_guess = random.randint(*universe)
 
 # The smallest range that contains the number to guest
 subuniverse = universe
+
 # The number guess
 guess_number = None
 

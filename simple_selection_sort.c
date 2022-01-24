@@ -12,6 +12,7 @@ int *SimpleSelectionSort(int *array, const int length) {
 	int y;
 	int z;
 	int temp;
+
 	// We take an element and compare it to another elements
 	for(x=0; x<length; x++) {
 		for(y=0; y<x; y++) {
@@ -30,14 +31,17 @@ int main() {
 	int array[] = {17, 6, 3, 1, 9, 4, 8, 2, 5};
 	int *arr = array;
 	int i;
+
 	printf("The initial array is ");
 	for(i=0; i<sizeof(array)/sizeof(int); i++) {
 		printf("%i ", arr[i]);
 	}
+
 	printf("\nThe sort array is ");
 	arr = SimpleSelectionSort(arr, sizeof(array)/sizeof(int));
 	for(i=0; i<sizeof(array)/sizeof(int); i++) {
 		printf("%i ", arr[i]);
 	}
+	
 	return 0;
 }

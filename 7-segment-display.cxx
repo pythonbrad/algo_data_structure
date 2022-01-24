@@ -23,13 +23,17 @@ void display(short num) {
 		e,0,0,c,
 		0,d,d,0
 	};
+
 	int x, y;
+
 	cout << "Input: " << A << B << C << D << endl;
 	cout << "Output: " << a << b <<c << d << e << f << g << endl;
+
 	for (y=0; y<7; y++) {
 		for (x=0; x<4; x++) {
 			cout << (map[y][x] ? 'x' : ' ');
 		};
+		
 		cout << endl;
 	};
 };
