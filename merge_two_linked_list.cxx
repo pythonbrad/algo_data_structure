@@ -31,10 +31,12 @@ int main() {
 	node1.next = new Node(3);
 	node1.next->next = new Node(5);
 	Node node2(2);
+	
 	node2.next = new Node(4);
 	node2.next->next = new Node(6);
 	Node *node3;
 	node3 = node3->mergeTwoLists(&node1, &node2);
+
 	while (node3) {
 		cout << node3->val << " ";
 		node3 = node3->next;
