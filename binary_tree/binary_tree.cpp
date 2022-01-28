@@ -28,6 +28,7 @@ class Node {
 				if (!this->left) {
 					this->left = new Node();
 				} else {};
+
 				// We enter in this node
 				this->left->insert(word);
 			} else if (word.compare(this->data) > 0) {
@@ -35,6 +36,7 @@ class Node {
 				if (!this->right) {
 					this->right = new Node();
 				} else {};
+
 				// We enter in this node
 				this->right->insert(word);
 			} else {
@@ -90,6 +92,7 @@ int main () {
 			// If the word not yet got, we insert it in the tree
 			if (word_got) {
 				tree_root->insert(curr_word);
+				
 				/// We mark the word get and empty the word
 				word_got = 0;
 				curr_word = "";

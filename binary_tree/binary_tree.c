@@ -65,6 +65,7 @@ void insert_word(char* word) {
 			if (curr_node->left == NULL) {
 				curr_node->left = new_node();
 			} else {};
+
 			// We enter in this node
 			curr_node = curr_node->left;
 		} else if (strcmp(word, curr_node->data) > 0) {
@@ -72,6 +73,7 @@ void insert_word(char* word) {
 			if (curr_node->right == NULL) {
 				curr_node->right = new_node();
 			} else {};
+			
 			// We enter in this node
 			curr_node = curr_node->right;
 		}
